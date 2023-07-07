@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+<div>
+    <span th:style="${'font-size:40px'}" th:text="${name}"></span>
+    <span>님 환영합니다.</span>
+</div>
+<br>
+<br>
+<a href="/revoke" th:style="${'border: 1px solid black; float:right; margin-right:10px'}">회원탈퇴</a>
+<a href="/log-out" th:style="${'border: 1px solid black; float:right; margin-right:10px'}">로그아웃</a>
+<a href="/member-info" th:style="${'border: 1px solid black; float:right; margin-right:10px'}">회원정보 보기</a>
+
+<br>
+<br>
+<hr th:style="${'width:100%; height: 3px; background-color:blue;'}">
+<br>
+<br>
+
+<span>상품이름 : </span>
+<span th:text="${item.itemName}"></span>
+<br>
+
+<span>경매 시작가 : </span>
+<span th:text="${item.basePrice}"></span>
+<br>
+
+<span>경매 종료가 : </span>
+<span th:text="${item.desirePrice}"></span>
+<br>
+
+<span>경매 최소 입찰가 : </span>
+<span th:text="${item.minimumPrice}"></span>
+<br>
+
+<span>경매 시작 일시 : </span>
+<span th:text="${item.auctionStartTime}"></span>
+<br>
+
+<span>경매 종료 일시 : </span>
+<span th:text="${item.auctionEndTime}"></span>
+<br>
+
+<span>야이템 상태 : </span>
+<span th:text="${item.itemStatus}"></span>
+<br>
+
+<span>최고 입찰자 : </span>
+<span th:text="${item.highestBidMemberName}"></span>
+<br>
+
+<span>현재 입찰가 : </span>
+<span th:text="${item.realTimePrice}"></span>
+<br>
+
+<span>마지막 입찰 시간 : </span>
+<span th:text="${item.lastBidTime}"></span>
+<br>
+
+</body>
+</html>

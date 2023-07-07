@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+    <div>
+        <span th:style="${'font-size:40px'}" th:text="${name}"></span>
+        <span>님 환영합니다.</span>
+    </div>
+    <br>
+    <br>
+    <a href="/revoke" th:style="${'border: 1px solid black; float:right; margin-right:10px'}">회원탈퇴</a>
+    <a href="/log-out" th:style="${'border: 1px solid black; float:right; margin-right:10px'}">로그아웃</a>
+    <a href="/member-info" th:style="${'border: 1px solid black; float:right; margin-right:10px'}">회원정보 보기</a>
+
+    <br>
+    <br>
+    <hr th:style="${'width:100%; height: 3px; background-color:blue;'}">
+<br>
+<br>
+    <a href="/item/list" th:style="${'border: 3px solid red; float:left; margin-right:10px'}">상품 조회하기</a>
+    <a href="/item/list/createdAt" th:style="${'border: 3px solid red; float:left; margin-right:10px'}">상품 등록 기준 조회하기</a>
+    <a href="/item/list/status" th:style="${'border: 3px solid red; float:left; margin-right:10px'}">상품 상태 기준 조회하기</a>
+    <a href="/item/mine" th:style="${'border: 3px solid red; float:left; margin-right:10px'}">내가 등록한 상품 조회하기</a>
+    <a href="/item/list/participant" th:style="${'border: 3px solid red; float:left; margin-right:10px'}">내가 참여중인 경매 정보 조회하기</a>
+    <a href="/item/register" th:style="${'border: 3px solid red; float:left; margin-right:10px'}">상품 등록하기</a>
+</body>
+</html>

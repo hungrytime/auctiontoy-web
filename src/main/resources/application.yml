@@ -1,0 +1,8 @@
+server:
+  port: 8100
+
+feign:
+  compression:
+    response:
+      enabled: true
+      useGzipDecoder: true
