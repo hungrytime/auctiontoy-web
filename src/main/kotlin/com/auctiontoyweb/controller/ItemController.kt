@@ -47,17 +47,15 @@ class ItemController(
         if (start == null || end == null) {
             return "item/register"
         }
+        if (start.isBefore(LocalDateTime.now())) {
+            throw IllegalArgumentException( "경매 시작 날짜는 현재 시점보다 이후 이어야 합니다.")
+        }
 
+        if (start.isAfter(end).not()) {
+            throw IllegalArgumentException( "경매 시작 날짜는 경매 종료 날짜보다 이전이어야 합니다.")
+        }
         itemService.register(RegisterItemVO.from(registerItemForm, UserInfoValue.userId, start, end))
-//        if (start.isBefore(LocalDateTime.now())) {
-//            return "<script>alert('경매 시작 날짜는 현재 시점보다 이후 이어야 합니다.');location.href='/item/register';</script>"
-////            throw IllegalArgumentException( "경매 시작 날짜는 현재 시점보다 이후 이어야 합니다.")
-//        }
-//
-//
-//        if (start.isAfter(end).not()) {
-//            throw IllegalArgumentException( "경매 시작 날짜는 경매 종료 날짜보다 이전이어야 합니다.")
-//        }
+
 
         return "redirect:/main"
     }

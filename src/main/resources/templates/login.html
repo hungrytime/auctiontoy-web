@@ -5,18 +5,47 @@
     <title>Login</title>
 </head>
 <body>
-<h2>Login</h2>
+
+<div th:style="${'display:flex; justify-content: center;'}">
+    <h1 th:style="${'margin-top 100px'}">AUCTION TOY</h1>
+</div>
+
 <br>
 <br>
-<form id="logInForm" action="/login" method="post" >
-    <span>ID : </span>
-    <input type="text" name="userId" placeholder="UserId">
-    <br>
-    <span>Password : </span>
-    <input type="text" name="password" placeholder="password">
-    <br>
-    <button type="submit" >로그인</button>
-    <a th:style="${'border: 1px solid black; float:right; margin-right:10px'}" href="/sign-up">회원 가입</a>
-</form>
+
+<div th:style="${'display:flex; justify-content: center;'}">
+    <h2>Login</h2>
+</div>
+
+<br>
+<br>
+
+<div th:style="${'display:flex; justify-content: center;'}">
+
+    <form id="logInForm" action="/login" method="post" >
+        <div>
+            <span>ID : </span>
+            <input th:style="${'margin-left: 3rem;'}" type="text" name="userId" placeholder="UserId">
+        </div>
+
+        <div th:style="${'margin-top: 15px;'}">
+            <span th:style="${'margin-top: 10px;'}">Password : </span>
+            <input type="text" name="password" placeholder="password">
+        </div>
+
+        <div th:style="${'margin-top: 15px; width: 100%; margin-bottom: 10px; height: 20px;'}">
+            <a th:style="${'border: 1px solid black; color: blue; float:right;'}" href="/sign-up">회원 가입</a>
+        </div>
+
+        <div th:style="${'margin-top: 15px;'}">
+            <button th:style="${'padding: 10px;background: #0f0;color: #000;font-weight: 600;font-size: 1.35em;'
+            + 'letter-spacing: 0.05em; cursor: pointer; width: 100%;'}"
+                    type="submit" >Login</button>
+        </div>
+
+    </form>
+</div>
+
 </body>
+
 </html>

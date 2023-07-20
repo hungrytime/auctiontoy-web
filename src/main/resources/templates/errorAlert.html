@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script th:inline="javascript">
+    window.onload = function () {
+        let message = /*[[ ${message} ]]*/ "";
+        if(message == null) {
+            messgae = "시스템 오류 발생"
+        }
+        alert(message)
+        history.go(-1)
+    }
+</script>
