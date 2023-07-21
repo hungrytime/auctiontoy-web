@@ -3,6 +3,7 @@ package com.auctiontoyweb.client
 import com.auctiontoyweb.MemberInfoDTO
 import com.auctiontoyweb.SignInMemberDTO
 import com.auctiontoyweb.SignUpMemberDTO
+import com.auctiontoyweb.exception.BusinessException
 import com.auctiontoyweb.exception.LogInErrorException
 import org.springframework.stereotype.Service
 
@@ -30,16 +31,19 @@ class MemberService(
 
     fun login(memberInfo: SignInMemberDTO): String {
         println("${UserInfoValue.token}")
-        var ret = memberClient.login(memberInfo).content
-
-//        ret = ret?.substring(0, ret.length-1)
-        UserInfoValue.token = ret?.token ?: "NONE"
-        if (ret != null) {
-            UserInfoValue.userId = memberInfo.id
-            UserInfoValue.userMemberId = ret.memberId!!
+        val ret = memberClient.login(memberInfo)
+        if(!ret.success) {
+            throw BusinessException(ret.message)
         }
 
-        return ret?.token ?: "NONE"
+//        ret = ret?.substring(0, ret.length-1)
+        UserInfoValue.token = ret.content?.token ?: "NONE"
+        if (ret.content != null) {
+            UserInfoValue.userId = memberInfo.id
+            UserInfoValue.userMemberId = ret.content?.memberId!!
+        }
+
+        return ret.content?.token ?: "NONE"
     }
 
     fun signUp(memberInfo: SignUpMemberDTO): String {

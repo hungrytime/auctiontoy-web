@@ -1,13 +1,13 @@
 package com.auctiontoyweb.client
 
 import com.auctiontoyweb.*
-import com.auctiontoyweb.config.ClientErrorDecoder
+//import com.auctiontoyweb.config.ClientErrorDecoder
 import com.auctiontoyweb.config.FeignConfig
 import com.auctiontoyweb.config.FeignHeaderConfig
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.*
 
-@FeignClient(name="item", url="127.0.0.1:8080", configuration = [FeignConfig::class, FeignHeaderConfig::class, ClientErrorDecoder::class])
+@FeignClient(name="item", url="127.0.0.1:8080", configuration = [FeignConfig::class, FeignHeaderConfig::class])
 interface ItemClient {
 
     @PostMapping(

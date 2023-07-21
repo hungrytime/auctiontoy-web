@@ -17,7 +17,7 @@ class MemberController(
     val memberService: MemberService
 ) {
 
-    @GetMapping("/login")
+    @GetMapping(value = ["/login", "/"])
     fun login(@ModelAttribute logInForm: LogInForm, model: Model): String {
         if(UserInfoValue.token.isNullOrBlank())
             return "/login"

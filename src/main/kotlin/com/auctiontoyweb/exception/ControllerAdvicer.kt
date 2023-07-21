@@ -10,14 +10,9 @@ import javax.security.auth.login.LoginException
 @ControllerAdvice
 class ControllerAdvicer {
 
-    @ExceptionHandler(value = [LogInErrorException::class])
-    fun loginException(e: LogInErrorException) {
+    @ExceptionHandler(value = [BusinessException::class])
+    fun businessException(e: BusinessException, model: Model): String {
         println(e.message)
-        println(e.path)
-    }
-
-    @ExceptionHandler(value = [IllegalArgumentException::class])
-    fun illegalException(e: IllegalArgumentException, model: Model) : String {
         model.addAttribute("message", e.message)
         return "errorAlert"
     }
