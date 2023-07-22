@@ -1,4 +1,4 @@
-package com.auctiontoyweb
+package com.auctiontoyweb.DTO.item
 
 data class SellerItemListDTO(
     val itemId: Long,

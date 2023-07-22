@@ -1,6 +1,5 @@
-package com.auctiontoyweb
+package com.auctiontoyweb.DTO.member
 
-import com.auctiontoyweb.controller.form.LogInForm
 import com.auctiontoyweb.controller.form.SignUpForm
 
 class SignUpMemberDTO(

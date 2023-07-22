@@ -2,7 +2,11 @@ package com.auctiontoyweb.client
 
 
 //import com.auctiontoyweb.config.FeignConfig
-import com.auctiontoyweb.*
+import com.auctiontoyweb.DTO.*
+import com.auctiontoyweb.DTO.member.MemberInfoDTO
+import com.auctiontoyweb.DTO.member.MemberTokenDTO
+import com.auctiontoyweb.DTO.member.SignInMemberDTO
+import com.auctiontoyweb.DTO.member.SignUpMemberDTO
 //import com.auctiontoyweb.config.ClientErrorDecoder
 import com.auctiontoyweb.config.FeignConfig
 //import com.auctiontoyweb.config.FeignErrorDecoder

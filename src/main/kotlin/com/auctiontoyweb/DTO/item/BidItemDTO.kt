@@ -1,4 +1,4 @@
-package com.auctiontoyweb
+package com.auctiontoyweb.DTO.item
 
 import java.math.BigDecimal
 

@@ -1,6 +1,6 @@
 package com.auctiontoyweb.controller
 
-import com.auctiontoyweb.SignInMemberDTO
+import com.auctiontoyweb.DTO.member.SignInMemberDTO
 import com.auctiontoyweb.client.MemberService
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping

@@ -1,8 +1,8 @@
 package com.auctiontoyweb.client
 
-import com.auctiontoyweb.MemberInfoDTO
-import com.auctiontoyweb.SignInMemberDTO
-import com.auctiontoyweb.SignUpMemberDTO
+import com.auctiontoyweb.DTO.member.MemberInfoDTO
+import com.auctiontoyweb.DTO.member.SignInMemberDTO
+import com.auctiontoyweb.DTO.member.SignUpMemberDTO
 import com.auctiontoyweb.exception.BusinessException
 import com.auctiontoyweb.exception.LogInErrorException
 import org.springframework.stereotype.Service
@@ -30,28 +30,33 @@ class MemberService(
     }
 
     fun login(memberInfo: SignInMemberDTO): String {
-        println("${UserInfoValue.token}")
+        println(UserInfoValue.token)
         val ret = memberClient.login(memberInfo)
         if(!ret.success) {
             throw BusinessException(ret.message)
         }
 
-//        ret = ret?.substring(0, ret.length-1)
-        UserInfoValue.token = ret.content?.token ?: "NONE"
         if (ret.content != null) {
+            UserInfoValue.token = ret.content.token
             UserInfoValue.userId = memberInfo.id
-            UserInfoValue.userMemberId = ret.content?.memberId!!
+            UserInfoValue.userMemberId = ret.content.memberId!!
+        }
+        else {
+            UserInfoValue.token =  "NONE"
         }
 
-        return ret.content?.token ?: "NONE"
+        return UserInfoValue.token
     }
 
     fun signUp(memberInfo: SignUpMemberDTO): String {
         println("${UserInfoValue.token}")
-        var ret = memberClient.signUp(memberInfo).content
-        if (ret != null && ret.equals("OK")) UserInfoValue.userId = memberInfo.id
+        val ret = memberClient.signUp(memberInfo)
+        if (!ret.success) {
+            throw BusinessException(ret.message)
+        }
+        UserInfoValue.userId = memberInfo.id
 
-        return ret ?: "NONE"
+        return ret.content ?: "NONE"
     }
 
     fun logout(): Boolean {

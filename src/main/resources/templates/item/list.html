@@ -3,52 +3,59 @@
 
 <head>
     <div id="header" th:replace="fragments/header"></div>
+    <script src="/js/pagination.js"></script>
 </head>
 
 <body>
 
-<div th:style="${'display:flex'}" th:if="${not #lists.isEmpty(page.contents)}">
-    <div th:style="${'flex: 0 0 100%; max-width: 100%;'}" >
-        <table th:style="${'border-collapse:collapse'}" role="grid">
-            <thread>
-                <tr>
-                    <th style="width: 8%; text-align: center">이름</th>
-                    <th style="width: 8%; text-align: center">참여 여부</th>
-                    <th style="width: 8%; text-align: center">상태</th>
-                    <th style="width: 8%; text-align: center">내가 입찰한 금액</th>
-                    <th style="width: 8%; text-align: center">최고 금액</th>
-                    <th style="width: 8%; text-align: center">시작 시간</th>
-                    <th style="width: 8%; text-align: center">종료 시간</th>
-                    <th style="width: 8%; text-align: center">상세 정보</th>
+    <div th:style="${'display:flex'}" th:if="${not #lists.isEmpty(page.contents)}">
+        <form id="searchForm" action="/item/list">
+            <input type="hidden" id="page" name="page" th:value="${searchItemListForm.page}">
+            <button type="submit">test</button>
+        </form>
+        <div th:style="${'flex: 0 0 100%; max-width: 100%;'}" >
+            <table th:style="${'border-collapse:collapse'}" role="grid">
+                <thread>
+                    <tr>
+                        <th style="width: 8%; text-align: center">이름</th>
+                        <th style="width: 8%; text-align: center">참여 여부</th>
+                        <th style="width: 8%; text-align: center">상태</th>
+                        <th style="width: 8%; text-align: center">내가 입찰한 금액</th>
+                        <th style="width: 8%; text-align: center">최고 금액</th>
+                        <th style="width: 8%; text-align: center">시작 시간</th>
+                        <th style="width: 8%; text-align: center">종료 시간</th>
+                        <th style="width: 8%; text-align: center">상세 정보</th>
+                    </tr>
+                </thread>
+                <tbody>
+                <tr role="row" th:each="item : ${page.contents}">
+                    <td style="text-align: center; vaertical-align: middle;" th:text="${item.itemName}"></td>
+                    <td style="text-align: center; vaertical-align: middle;" th:text="${item.isBidThisItem != false}?'Y':'N'"></td>
+                    <td style="text-align: center; vaertical-align: middle;" th:text="${item.itemStatus}"></td>
+                    <td style="text-align: center; vaertical-align: middle;" th:text="${item.priceIBid}"></td>
+                    <td style="text-align: center; vaertical-align: middle;" th:text="${item.bestPrice}"></td>
+                    <td style="text-align: center; vaertical-align: middle;" th:text="${item.auctionStartTime}"></td>
+                    <td style="text-align: center; vaertical-align: middle;" th:text="${item.auctionEndTime}"></td>
+                    <td style="text-align: center;">
+                        <a th:href="@{'/item/list/detail/' + ${item.itemId}}">
+                            <button th:text="상세보기"></button>
+                        </a>
+                    </td>
                 </tr>
-            </thread>
-            <tbody>
-            <tr role="row" th:each="item : ${page.contents}">
-                <td style="text-align: center; vaertical-align: middle;" th:text="${item.itemName}"></td>
-                <td style="text-align: center; vaertical-align: middle;" th:text="${item.isBidThisItem != false}?'Y':'N'"></td>
-                <td style="text-align: center; vaertical-align: middle;" th:text="${item.itemStatus}"></td>
-                <td style="text-align: center; vaertical-align: middle;" th:text="${item.priceIBid}"></td>
-                <td style="text-align: center; vaertical-align: middle;" th:text="${item.bestPrice}"></td>
-                <td style="text-align: center; vaertical-align: middle;" th:text="${item.auctionStartTime}"></td>
-                <td style="text-align: center; vaertical-align: middle;" th:text="${item.auctionEndTime}"></td>
-                <td style="text-align: center;">
-                    <a th:href="@{'/item/list/detail/' + ${item.itemId}}">
-                        <button th:text="상세보기"></button>
-                    </a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+    <div th:style="${'display:flex'}" th:unless="${not #lists.isEmpty(page.contents)}">정보가 없습니다.</div>
 
-<div th:style="${'display:flex'}" th:unless="${not #lists.isEmpty(page.contents)}">정보가 없습니다.</div>
-
-<div th:if="${not #lists.isEmpty(page.contents)}">
-    <div th:text="${searchItemListForm.page}"></div>
-    <div th:text="${page.totalPage}"></div>
-<!--    <div th:replace="fragments/pagination :: pagination(${searchItemListForm.page}, ${page.totalPage} )"></div>-->
-</div>
+    <div th:if="${not #lists.isEmpty(page.contents)}">
+        <div th:replace="fragments/pagination :: pagination(${searchItemListForm.page}, ${page.totalPage} )"></div>
+        <span th:text="${searchItemListForm.page}"></span>
+        <span th:text="${page.totalPage}"></span>
+    </div>
 
 </body>
+
+
+
 </html>

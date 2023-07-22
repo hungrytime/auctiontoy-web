@@ -1,6 +1,8 @@
 package com.auctiontoyweb.client
 
 import com.auctiontoyweb.*
+import com.auctiontoyweb.DTO.*
+import com.auctiontoyweb.DTO.item.*
 //import com.auctiontoyweb.config.ClientErrorDecoder
 import com.auctiontoyweb.config.FeignConfig
 import com.auctiontoyweb.config.FeignHeaderConfig

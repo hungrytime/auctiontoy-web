@@ -1,4 +1,4 @@
-package com.auctiontoyweb
+package com.auctiontoyweb.DTO.member
 
 data class MemberInfoDTO(
     val memberName: String,

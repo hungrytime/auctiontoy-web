@@ -1,14 +1,5 @@
 package com.auctiontoyweb.config
 
-import com.auctiontoyweb.ResponseDTO
-import com.auctiontoyweb.client.UserInfoValue
-import com.auctiontoyweb.exception.LogInErrorException
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import feign.Response
-import feign.codec.ErrorDecoder
-import java.io.IOException
-import java.security.Timestamp
-
 
 //class ClientErrorDecoder(
 //    val feignErrorDecoder: FeignErrorDecoder

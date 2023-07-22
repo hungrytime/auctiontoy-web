@@ -1,4 +1,6 @@
-package com.auctiontoyweb
+package com.auctiontoyweb.DTO
+
+import com.auctiontoyweb.ResultCode
 
 data class PageResponseDTO<T> (
     val code: String = "",

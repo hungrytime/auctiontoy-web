@@ -2,11 +2,12 @@
 <html lang="ko-KR" xmlns:th="http://www.thymeleaf.org">
     <th:block th:fragment="header">
         <meta charset="UTF-8">
-        <title>Main</title>
         <div>
             <span th:style="${'font-size:40px'}" th:text="${name}"></span>
             <span>님 환영합니다.</span>
+            <button th:style="${'float: right;'}" th:onclick="goBack()">뒤로가기</button>
         </div>
+
         <br>
         <br>
         <a href="/revoke" th:style="${'border: 1px solid black; float:right; margin-right:10px'}">회원탈퇴</a>
@@ -16,5 +17,16 @@
         <br>
         <br>
         <hr th:style="${'width:100%; height: 3px; background-color:blue;'}">
+        <!-- boot strap -->
+<!--        <link href="/vendor/datepicker/datepicker.min.css" rel="stylesheet">-->
+<!--        <link href="/css/font.css" rel="stylesheet">-->
+        <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+        <script src="/vendor/jquery/jquery.min.js"></script>
     </th:block>
 </html>
+
+<script th:inline="javascript">
+    function goBack() {
+        history.go(-1)
+    }
+</script>

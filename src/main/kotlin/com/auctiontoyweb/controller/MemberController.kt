@@ -1,7 +1,7 @@
 package com.auctiontoyweb.controller
 
-import com.auctiontoyweb.SignInMemberDTO
-import com.auctiontoyweb.SignUpMemberDTO
+import com.auctiontoyweb.DTO.member.SignInMemberDTO
+import com.auctiontoyweb.DTO.member.SignUpMemberDTO
 import com.auctiontoyweb.client.MemberService
 import com.auctiontoyweb.client.UserInfoValue
 import com.auctiontoyweb.controller.form.LogInForm
