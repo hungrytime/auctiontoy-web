@@ -11,7 +11,6 @@
     <div th:style="${'display:flex'}" th:if="${not #lists.isEmpty(page.contents)}">
         <form id="searchForm" action="/item/list">
             <input type="hidden" id="page" name="page" th:value="${searchItemListForm.page}">
-            <button type="submit">test</button>
         </form>
         <div th:style="${'flex: 0 0 100%; max-width: 100%;'}" >
             <table th:style="${'border-collapse:collapse'}" role="grid">
