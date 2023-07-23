@@ -47,14 +47,11 @@
     </div>
     <div th:style="${'display:flex'}" th:unless="${not #lists.isEmpty(page.contents)}">정보가 없습니다.</div>
 
-    <div th:if="${not #lists.isEmpty(page.contents)}">
+    <div th:if="${not #lists.isEmpty(page.contents)}"
+         th:style="${'position: absolute; top: 80%; left: 50%; transform: translate(-50%, 0%);'}">
         <div th:replace="fragments/pagination :: pagination(${searchItemListForm.page}, ${page.totalPage} )"></div>
-        <span th:text="${searchItemListForm.page}"></span>
-        <span th:text="${page.totalPage}"></span>
     </div>
 
 </body>
-
-
 
 </html>

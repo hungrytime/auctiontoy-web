@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <span th:style="${'font-size:40px'}" th:text="${userId}"></span>
+    <span th:style="${'font-size:40px'}" th:text="${userName}"></span>
     <span>님 환영합니다.</span>
 </div>
 <br>
@@ -16,8 +16,10 @@
 <br>
 <hr th:style="${'width:100%; height: 3px; background-color:blue;'}">
 <br>
-<h3 th:text="${userName}"></h3>
-<h3 th:text="${createdAt}"></h3>
-<h3 th:text="${userId}"></h3>
+    <span th:style="${'font-size: 20px;'}">이름 :  </span><span th:style="${'font-size: 20px;'}" th:text="${userName}"></span>
+    <br>
+    <span th:style="${'font-size: 20px;'}">만든 날짜 :  </span><span th:style="${'font-size: 20px;'}" th:text="${createdAt}"></span>
+    <br>
+    <span th:style="${'font-size: 20px;'}">ID :  </span><span th:style="${'font-size: 20px;'}" th:text="${userId}"></span>
 </body>
 </html>

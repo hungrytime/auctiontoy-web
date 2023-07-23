@@ -5,6 +5,7 @@ import com.auctiontoyweb.RegisterItemVO
 import com.auctiontoyweb.client.ItemService
 import com.auctiontoyweb.client.UserInfoValue
 import com.auctiontoyweb.controller.form.*
+import com.auctiontoyweb.exception.BusinessException
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -48,14 +49,13 @@ class ItemController(
             return "item/register"
         }
         if (start.isBefore(LocalDateTime.now())) {
-            throw IllegalArgumentException( "경매 시작 날짜는 현재 시점보다 이후 이어야 합니다.")
+            throw BusinessException( "경매 시작 날짜는 현재 시점보다 이후 이어야 합니다.")
         }
 
         if (start.isAfter(end).not()) {
-            throw IllegalArgumentException( "경매 시작 날짜는 경매 종료 날짜보다 이전이어야 합니다.")
+            throw BusinessException( "경매 시작 날짜는 경매 종료 날짜보다 이전이어야 합니다.")
         }
         itemService.register(RegisterItemVO.from(registerItemForm, UserInfoValue.userId, start, end))
-
 
         return "redirect:/main"
     }
